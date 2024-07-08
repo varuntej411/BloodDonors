@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.serialization)
-    id("kotlin-android")
     id("kotlin-kapt")
 }
 
@@ -79,6 +78,7 @@ dependencies {
     //Room Database
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)
+    annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.guava)
     // implementation(libs.androidx.room.coroutines)
@@ -107,6 +107,8 @@ dependencies {
     implementation(libs.converter.scalars)
     implementation(libs.retrofit.converters)
     implementation(libs.retrofit.adapters)
+    //data store preferences
+    implementation(libs.androidx.datastore)
 
 
 
