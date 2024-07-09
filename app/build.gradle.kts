@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.fragment.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
@@ -112,12 +113,19 @@ dependencies {
     // paging
     implementation(libs.androidx.paging)
     implementation(libs.androidx.paging.compose)
+    // Accompanist
+    implementation(libs.accompanist.permission)
 
 
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
     testImplementation(libs.mockwebserver)
+    testImplementation(libs.androidx.core.test)
+    testImplementation(libs.androidx.mock.test)
+    testImplementation(libs.androidx.mockito)
+    testImplementation(libs.androidx.mockito.kotlin)
+
+    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)

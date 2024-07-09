@@ -4,10 +4,15 @@ kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
+coreVersion = "1.6.1"
+mockVersion = "1.13.11"
+mockitoVersion = "5.12.0"
+mockitoKotlinVersion = "5.4.0"
 espressoCore = "3.6.1"
 materialVersion = "1.2.1"
 lifecycleRuntimeKtx = "2.8.3"
 activityCompose = "1.9.0"
+fragmentCompose = "1.8.1"
 composeBom = "2024.06.00"
 mockwebserver = "5.0.0-alpha.14"
 navigationCompose = "2.7.7"
@@ -30,18 +35,28 @@ kotlinxCoroutines = "1.9.0-RC"
 datastore_preference = "1.1.1"
 pagingRuntime = "3.3.0"
 pagingCompose = "3.3.0"
+accompanistPermissions = "0.34.0"
+
 
 
 [libraries]
+# Accompanist
+accompanist-permission = { group="com.google.accompanist", name="accompanist-permissions", version.ref = "accompanistPermissions" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-core-test = { group = "androidx.test", name = "core", version.ref = "coreVersion" }
+androidx-mock-test = { group = "io.mockk", name = "mockk", version.ref = "mockVersion" }
+androidx-mockito = { group = "org.mockito", name = "mockito-core", version.ref ="mockitoVersion"}
+androidx-mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlinVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "mockwebserver" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version = "1.6.8" }
+
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-fragment-compose = { group = "androidx.fragment", name = "fragment-compose", version.ref = "fragmentCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
