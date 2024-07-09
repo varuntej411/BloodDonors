@@ -109,6 +109,9 @@ dependencies {
     implementation(libs.retrofit.adapters)
     //data store preferences
     implementation(libs.androidx.datastore)
+    // paging
+    implementation(libs.androidx.paging)
+    implementation(libs.androidx.paging.compose)
 
 
 

@@ -28,6 +28,8 @@ roomPagingGuava = "2.7.0-alpha04"
 roomKtx = "2.6.1"
 kotlinxCoroutines = "1.9.0-RC"
 datastore_preference = "1.1.1"
+pagingRuntime = "3.3.0"
+pagingCompose = "3.3.0"
 
 
 [libraries]
@@ -80,6 +82,8 @@ androidx-room-guava = { group = "androidx.room", name = "room-guava", version.re
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore_preference" }
+androidx-paging = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "pagingRuntime" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingCompose" }
 
 
 [plugins]
