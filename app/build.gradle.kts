@@ -1,8 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.compose)
     alias(libs.plugins.jetbrains.kotlin.serialization)
-    id("kotlin-kapt")
+    alias(libs.plugins.hilt.version)
+    alias(libs.plugins.room.version)
+    alias(libs.plugins.ksp.version)
+    alias(libs.plugins.kotlin.parcelize)
+    // id("kotlin-kapt")
 }
 
 android {
@@ -42,12 +47,18 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.4"
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+    hilt {
+        enableAggregatingTask = true
+    }
+    room {
+        schemaDirectory("$projectDir/schemas")
     }
 }
 
@@ -65,21 +76,21 @@ dependencies {
 
     //navigation compose
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     //hilt dagger
-    implementation(libs.androidx.hilt.viewmodel)
-    //  kapt(libs.androidx.hilt.compiler)
-    kapt(libs.google.hilt.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.hilt)
+    implementation(libs.androidx.hilt.android)
+    ksp(libs.androidx.hilt.compiler)
+    ksp(libs.hilt.androidx.compiler)
+    implementation(libs.hilt.navigation.compose)
+
 
     //Coroutines
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
 
     //Room Database
-    //noinspection KaptUsageInsteadOfKsp
-    kapt(libs.androidx.room.compiler)
-    annotationProcessor(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
+    // annotationProcessor(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.guava)
     // implementation(libs.androidx.room.coroutines)
@@ -93,11 +104,11 @@ dependencies {
     implementation(platform(libs.okhttp.bom))
 
     //coil image loader
+    implementation(libs.androidx.coil)
     implementation(libs.androidx.coil.compose)
     //Glide image loader
     implementation(libs.androidx.glider)
-    //noinspection KaptUsageInsteadOfKsp
-    kapt(libs.androidx.glider.compiler)
+    ksp(libs.androidx.glider.compiler)
 
     //retrofit
     implementation(libs.retrofit)
