@@ -1,7 +1,7 @@
 package com.blood.donors.di
 
-import com.blood.donors.data.BloodDonarApiService
-import com.blood.donors.utils.Constants.Companion.BASE_URL
+import com.blood.donors.data.remote.BloodDonorApiService
+import com.blood.donors.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,11 +14,11 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object AppModule  {
+object AppNetworkModule {
 
     @Provides
     @Singleton
-    fun provideHttpLoggingInterceptor() : HttpLoggingInterceptor {
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
             level = HttpLoggingInterceptor.Level.BASIC
@@ -28,19 +28,25 @@ object AppModule  {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(interceptor: HttpLoggingInterceptor) : OkHttpClient {
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
-            .addNetworkInterceptor(interceptor)
+            .addInterceptor(loggingInterceptor)
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideRetrofitClient(client: OkHttpClient) : BloodDonarApiService {
-        return Retrofit.Builder()
-            .client(client)
+    fun provideRetrofitClient(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder().client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .build().create(BloodDonarApiService::class.java)
+            .baseUrl(Constants.BASE_URL)
+            .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): BloodDonorApiService {
+        return retrofit.create(BloodDonorApiService::class.java)
+    }
+
 }

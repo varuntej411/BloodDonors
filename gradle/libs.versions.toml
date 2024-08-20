@@ -16,7 +16,7 @@ fragmentCompose = "1.8.2"
 composeBom = "2024.06.00"
 mockwebserver = "5.0.0-alpha.14"
 navigationCompose = "2.7.7"
-hiltDagger = "2.51.1"
+hiltDagger = "2.52"
 hiltCompose = "1.2.0"
 coilCompose = "2.7.0"
 glideCompose = "4.16.0"
@@ -36,6 +36,15 @@ pagingCompose = "3.3.2"
 accompanistPermissions = "0.34.0"
 #ktlint = "10.3.0"
 uiVersion = "1.6.8"
+googleServiceVersion = "4.4.2"
+#FireBase
+firebaseBom = "33.1.2"
+firebaseAuth = "23.0.0"
+firebaseDataBase = "21.0.0"
+firebaseAnalytics = "22.0.2"
+#firebaseCrashlytics = "19.0.3"
+firebaseCloudMessaging = "24.0.0"
+#firebaseCrashlyticsGradle = "3.0.2"
 
 
 [libraries]
@@ -99,7 +108,13 @@ kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore_preference" }
 androidx-paging = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "pagingRuntime" }
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagingCompose" }
-
+#Firebase
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
+#firebase-crashlytic = { group = "com.google.firebase", name = "firebase.crashlytics", version.ref = "firebaseCrashlytics" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-cloud-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseCloudMessaging" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDataBase" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "library" }
@@ -111,4 +126,6 @@ ksp-version = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
 hilt-version = { id = "com.google.dagger.hilt.android", version.ref = "hiltDagger" }
 room-version = { id = "androidx.room", version.ref = "roomKtx" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServiceVersion" }
+#firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsGradle" }
 #ktlint = { id="org.jlleitschuh.gradle.ktlint", version.ref="ktlint" }

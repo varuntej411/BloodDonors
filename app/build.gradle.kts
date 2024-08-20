@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.room.version)
     alias(libs.plugins.ksp.version)
     alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.google.services)
+//    alias(libs.plugins.firebase.crashlytics)
     // id("kotlin-kapt")
 }
 
@@ -37,11 +39,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -79,6 +81,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     //hilt dagger
     implementation(libs.androidx.hilt.android)
+    implementation(libs.firebase.auth)
     ksp(libs.androidx.hilt.compiler)
     ksp(libs.hilt.androidx.compiler)
     implementation(libs.hilt.navigation.compose)
@@ -126,6 +129,13 @@ dependencies {
     implementation(libs.androidx.paging.compose)
     // Accompanist
     implementation(libs.accompanist.permission)
+    //Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    //implementation(libs.firebase.crashlytic)
+    implementation(libs.firebase.cloud.messaging)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.auth)
 
 
 

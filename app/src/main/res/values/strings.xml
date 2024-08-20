@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">BloodDonors</string>
+    <string name="app_name">BloodDonor</string>
+    <string name="blood_reminder">reminder</string>
 </resources>

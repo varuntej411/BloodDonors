@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "325840204524",
+    "firebase_url": "https://blooddonors-eadc3-default-rtdb.firebaseio.com",
     "project_id": "blooddonors-eadc3",
     "storage_bucket": "blooddonors-eadc3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:325840204524:android:86761de6fdc0d4c756ebc9",
+        "mobilesdk_app_id": "1:325840204524:android:047ac143fafc515f56ebc9",
         "android_client_info": {
           "package_name": "com.blood.donors"
         }
