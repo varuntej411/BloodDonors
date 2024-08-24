@@ -1,6 +1,5 @@
 package com.blood.donors.presentation.screens
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -55,10 +54,9 @@ import com.blood.donors.MainNavGraphs.Route
 import com.blood.donors.R
 
 @Composable
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-fun LoginScreen(
+fun SignupScreen(
     navController: NavHostController,
-    registerClicked: (String, String) -> Unit
+    loginClicked: (String, String) -> Unit
 ) {
 
     val context = LocalContext.current
@@ -72,7 +70,7 @@ fun LoginScreen(
                 textDecoration = TextDecoration.None
             )
         )
-        append("Not Registered? ")
+        append("Already Registered? ")
         pop()
         withStyle(
             style = SpanStyle(
@@ -83,7 +81,7 @@ fun LoginScreen(
                 textDecoration = TextDecoration.Underline
             )
         ) {
-            append("Click here for Register")
+            append("Login")
         }
         pop()
     }
@@ -279,7 +277,7 @@ fun LoginScreen(
 
                 ElevatedButton(
                     onClick = {
-                        registerClicked.invoke(mail, password)
+                        loginClicked.invoke(mail, password)
                     },
                     modifier = Modifier
                         .height(75.dp)
@@ -288,7 +286,7 @@ fun LoginScreen(
                     shape = RoundedCornerShape(10.dp)
                 ) {
                     Text(
-                        text = "Login",
+                        text = "SignUp",
                         color = Color.White,
                         textAlign = TextAlign.Center,
                         fontStyle = FontStyle.Normal,
@@ -318,10 +316,15 @@ fun LoginScreen(
             }
         }
     }
+
 }
 
 @Preview
 @Composable
-fun PreviewLoginScreen() {
-    LoginScreen(navController = rememberNavController(), registerClicked = { s, s1 -> })
+fun PreviewSignUpScreen() {
+    SignupScreen(
+        navController = rememberNavController(),
+        loginClicked = { _, _ -> }
+    )
 }
+

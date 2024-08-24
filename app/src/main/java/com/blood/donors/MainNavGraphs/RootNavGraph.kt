@@ -8,34 +8,60 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.blood.donors.MainNavigationScreen
+import com.blood.donors.presentation.screens.CartScreen
+import com.blood.donors.presentation.screens.HomeScreen
 import com.blood.donors.presentation.screens.LoginScreen
+import com.blood.donors.presentation.screens.ProfileScreen
+import com.blood.donors.presentation.screens.SearchScreen
+import com.blood.donors.presentation.screens.SignupScreen
 
 @Composable
-fun SetUpNavGraph(navController: NavHostController, contentPaddingValues: PaddingValues) {
+fun RootNavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Route.SplashScreen.screen,
+        startDestination = Graph.AuthGraph,
         route = Graph.RootGraph
     ) {
         // splashNavGraph(navController = navController)
         AuthNavGraph(navController = navController)
-        HomeNavGraph(navController = navController, contentPaddingValues = contentPaddingValues)
+        HomeNavGraph(navController = navController)
     }
 }
 
+//Auth
 fun NavGraphBuilder.AuthNavGraph(navController: NavHostController) {
     navigation(
         route = Graph.AuthGraph,
         startDestination = Route.LoginScreen.screen
     ) {
+//        composable(route = Route.OnBoardingScreen.screen) {
+//            OnBoardingScreen(navigateToOnBoardScreen = {
+//                navController.navigate(route = Route.LoginScreen.screen)
+//            })
+//        }
         composable(route = Route.LoginScreen.screen) {
-            LoginScreen(navController = navController)
+            LoginScreen(navController = navController, registerClicked = { s: String, s1: String ->
+                if (s.isNotEmpty() && s1.isNotEmpty()) {
+                    navController.navigate(route = Route.SignupScreen.screen)
+                }
+
+            })
+        }
+        composable(route = Route.SignupScreen.screen) {
+            SignupScreen(navController = navController, loginClicked = { s: String, s1: String ->
+                if (s.isNotEmpty() && s1.isNotEmpty()) {
+                    navController.navigate(route = Graph.HomeNavGraph)
+                }
+            })
         }
     }
 }
 
-fun NavGraphBuilder.HomeNavGraph(navController: NavHostController, contentPaddingValues: PaddingValues) {
+//Home
+fun NavGraphBuilder.HomeNavGraph(
+    navController: NavHostController
+) {
     navigation(
         route = Graph.HomeNavGraph,
         startDestination = Route.MainScreenNavigation.screen
@@ -44,16 +70,16 @@ fun NavGraphBuilder.HomeNavGraph(navController: NavHostController, contentPaddin
             MainNavigationScreen(navController = navController)
         }
         composable(route = Route.HomeScreen.screen) {
-            //HomeScreen(contentPaddingValues = contentPaddingValues)
+            HomeScreen(contentPaddingValues = PaddingValues())
         }
         composable(route = Route.SearchScreen.screen) {
-            // SearchScreen()
+            SearchScreen()
         }
         composable(route = Route.CartScreen.screen) {
-            // CartScreen()
+            CartScreen()
         }
         composable(route = Route.ProfileScreen.screen) {
-            // ProfileScreen()
+            ProfileScreen()
         }
     }
 }

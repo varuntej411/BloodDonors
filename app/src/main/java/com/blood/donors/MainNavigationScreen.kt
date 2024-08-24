@@ -17,10 +17,10 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.blood.donors.presentation.components.CustomToolBar
-import com.blood.donors.presentation.navigation.BottomNavigationBar
+import com.blood.donors.MainNavGraphs.RootNavGraph
 import com.blood.donors.MainNavGraphs.Route
-import com.blood.donors.MainNavGraphs.SetUpNavGraph
+import com.blood.donors.presentation.customComponents.CustomToolBar
+import com.blood.donors.presentation.navigation.BottomNavigationBar
 import com.blood.donors.presentation.navigation.bottomBarItems
 
 
@@ -86,7 +86,7 @@ fun MainNavigationScreen(navController: NavHostController) {
             )
         }
     ) { innerPaddingValues ->
-        SetUpNavGraph(navController = navController, contentPaddingValues = innerPaddingValues)
+//        RootNavGraph(navController = navController)
     }
 
 }
